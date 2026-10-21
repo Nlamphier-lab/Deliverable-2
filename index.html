@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard | MGIS130</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>Personal Weather Dashboard</h1>
+      <p>Three-Layer Information System Demonstration</p>
+    </header>
+
+    <main class="main-content">
+      <!-- PRESENTATION / CONTROLS & INPUT -->
+      <section class="card input-section">
+        <h2>Location Search</h2>
+        
+        <div class="presets-container">
+          <label>Popular Cities:</label>
+          <div class="preset-buttons">
+            <button type="button" class="btn-preset" data-city="Rochester">Rochester, NY</button>
+            <button type="button" class="btn-preset" data-city="New York">New York, NY</button>
+            <button type="button" class="btn-preset" data-city="London">London, UK</button>
+            <button type="button" class="btn-preset" data-city="Tokyo">Tokyo, JP</button>
+          </div>
+        </div>
+
+        <form id="search-form" class="search-form">
+          <div class="form-group">
+            <input type="text" id="city-input" placeholder="Enter city name (e.g., Chicago)..." value="Rochester" required>
+          </div>
+          <button type="submit" class="btn-primary">Get Weather</button>
+        </form>
+
+        <div class="unit-toggle-container">
+          <span>Temperature Unit:</span>
+          <button type="button" id="toggle-unit-btn" class="btn-toggle">Switch to °C</button>
+        </div>
+
+        <div id="error-message" class="error-banner hidden"></div>
+      </section>
+
+      <!-- PRESENTATION / CURRENT WEATHER DISPLAY -->
+      <section class="card display-section">
+        <div class="display-header">
+          <h2 id="location-name">Rochester, NY</h2>
+          <span id="weather-date" class="weather-date">Today</span>
+        </div>
+
+        <div id="loading-indicator" class="loading-spinner hidden">Fetching weather data...</div>
+
+        <div id="weather-body" class="weather-body">
+          <div class="main-temp-card">
+            <div class="icon-container">
+              <span id="weather-icon" class="weather-icon">☀️</span>
+            </div>
+            <div class="temp-container">
+              <span id="current-temp" class="current-temp">--°F</span>
+              <span id="weather-condition" class="weather-condition">Loading...</span>
+            </div>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <span class="metric-label">High / Low</span>
+              <span class="metric-value" id="temp-high-low">-- / --</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">Wind Speed</span>
+              <span class="metric-value" id="wind-speed">-- mph</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">Humidity</span>
+              <span class="metric-value" id="humidity">--%</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">Advisory</span>
+              <span class="metric-value" id="weather-advisory">--</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 3-DAY FORECAST SECTION -->
+    <section id="forecast-section" class="card forecast-section">
+      <h2>3-Day Outlook</h2>
+      <div id="forecast-grid" class="forecast-grid">
+        <!-- Dynamically rendered by JS -->
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <p>MGIS130 Information Systems & Technology &bull; Single-Page Web Application</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
