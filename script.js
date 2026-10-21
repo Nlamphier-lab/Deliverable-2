@@ -2,9 +2,6 @@
    1. DATA LAYER (Information Fetching & Storage)
    ========================================================================== */
 
-/**
- * Fallback dataset with full daily forecast data if network calls fail
- */
 const MOCK_WEATHER_DATABASE = {
   "rochester": {
     name: "Rochester, NY", tempC: 12, conditionCode: 3, windKmh: 14, highC: 15, lowC: 7,
@@ -44,9 +41,6 @@ const MOCK_WEATHER_DATABASE = {
   }
 };
 
-/**
- * Data Layer API Fetcher: Uses Open-Meteo API with multi-field fallback
- */
 async function fetchWeatherData(cityName) {
   const query = cityName.trim().toLowerCase();
 
@@ -73,7 +67,6 @@ async function fetchWeatherData(cityName) {
     if (!weatherResponse.ok) throw new Error("Weather service unreachable.");
     const weatherData = await weatherResponse.json();
 
-    // Support both weathercode and weather_code properties
     const currentCode = weatherData.current_weather ? 
       (weatherData.current_weather.weathercode ?? weatherData.current_weather.weather_code ?? 0) : 0;
 
