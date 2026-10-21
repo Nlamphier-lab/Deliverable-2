@@ -20,6 +20,13 @@
   padding: 0;
 }
 
+/* Keyframes for Smooth Animated Moving Backgrounds */
+@keyframes movingGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-color);
@@ -28,27 +35,38 @@ body {
   padding: 20px 12px;
   min-height: 100vh;
   transition: background-color 0.5s ease, color 0.3s ease;
+  background-size: 300% 300%;
 }
 
-/* Dynamic Weather Background Themes */
+/* Moving Dynamic Background Themes */
 body.weather-clear {
-  background: linear-gradient(135deg, #BAE6FD 0%, #E0F2FE 100%);
+  background: linear-gradient(-45deg, #7DD3FC, #BAE6FD, #E0F2FE, #38BDF8);
+  background-size: 300% 300%;
+  animation: movingGradient 14s ease infinite;
 }
 
 body.weather-cloudy {
-  background: linear-gradient(135deg, #CBD5E1 0%, #E2E8F0 100%);
+  background: linear-gradient(-45deg, #94A3B8, #CBD5E1, #E2E8F0, #64748B);
+  background-size: 300% 300%;
+  animation: movingGradient 16s ease infinite;
 }
 
 body.weather-rainy {
-  background: linear-gradient(135deg, #94A3B8 0%, #CBD5E1 100%);
+  background: linear-gradient(-45deg, #475569, #64748B, #94A3B8, #334155);
+  background-size: 300% 300%;
+  animation: movingGradient 12s ease infinite;
 }
 
 body.weather-snowy {
-  background: linear-gradient(135deg, #E2E8F0 0%, #F8FAFC 100%);
+  background: linear-gradient(-45deg, #CBD5E1, #E2E8F0, #F8FAFC, #94A3B8);
+  background-size: 300% 300%;
+  animation: movingGradient 18s ease infinite;
 }
 
 body.weather-thunderstorm {
-  background: linear-gradient(135deg, #334155 0%, #475569 100%);
+  background: linear-gradient(-45deg, #1E293B, #334155, #475569, #0F172A);
+  background-size: 300% 300%;
+  animation: movingGradient 10s ease infinite;
 }
 
 .app-container {
@@ -66,7 +84,8 @@ body.weather-thunderstorm {
   color: var(--primary);
 }
 
-body.weather-thunderstorm .app-header h1 {
+body.weather-thunderstorm .app-header h1,
+body.weather-rainy .app-header h1 {
   color: #F8FAFC;
 }
 
@@ -75,8 +94,9 @@ body.weather-thunderstorm .app-header h1 {
   font-size: 0.95rem;
 }
 
-body.weather-thunderstorm .app-header p {
-  color: #94A3B8;
+body.weather-thunderstorm .app-header p,
+body.weather-rainy .app-header p {
+  color: #CBD5E1;
 }
 
 .main-content {
@@ -235,7 +255,7 @@ body.weather-thunderstorm .app-header p {
   color: white;
   padding: 20px;
   border-radius: var(--radius); /* Sharp corners */
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .weather-icon {
@@ -252,6 +272,23 @@ body.weather-thunderstorm .app-header p {
 .weather-condition {
   font-size: 1rem;
   opacity: 0.9;
+}
+
+/* Recommended Clothing Styling */
+.clothing-card {
+  background-color: #F8FAFC;
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: var(--radius);
+}
+
+.clothing-value {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 4px;
 }
 
 .metrics-grid {
@@ -275,7 +312,7 @@ body.weather-thunderstorm .app-header p {
 }
 
 .metric-value {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-main);
 }
@@ -333,6 +370,7 @@ body.weather-thunderstorm .app-header p {
   color: var(--text-muted);
 }
 
-body.weather-thunderstorm .app-footer {
-  color: #94A3B8;
+body.weather-thunderstorm .app-footer,
+body.weather-rainy .app-footer {
+  color: #CBD5E1;
 }
