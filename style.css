@@ -234,6 +234,48 @@ body.weather-rainy .app-header p {
   margin-top: 12px;
 }
 
+/* SEVERE WEATHER BANNER STYLING */
+.severe-alert-box {
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: var(--radius); /* Sharp corners */
+  border-left: 5px solid;
+  transition: all 0.3s ease;
+}
+
+.severe-alert-box.alert-clear {
+  background-color: #F0FDF4;
+  border-color: #22C55E;
+  color: #14532D;
+}
+
+.severe-alert-box.alert-warning {
+  background-color: #FEF2F2;
+  border-color: #DC2626;
+  color: #7F1D1D;
+  animation: pulseWarning 2s infinite;
+}
+
+@keyframes pulseWarning {
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.2); }
+  70% { box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+.alert-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.alert-details {
+  font-size: 0.85rem;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
 /* Display Section */
 .display-header {
   display: flex;
